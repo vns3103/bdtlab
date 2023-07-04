@@ -1,0 +1,17 @@
+import org.apache.spark.sparkContext
+import org.apache.spark.sparkConf
+import org.apache.spark.rdd.RDD
+
+object wordcount{
+	def main(args : Array[String]){
+		val pathToFile = "log.txt"
+		val conf = new SparkConf().setAppName("word count").setMaster("local[*]")
+		val sc = new sparkContext(conf)
+		val wordsRdd = sc.textFile(pathToFile).flatmap(_.split(" "))
+		val wordcountInitRdd = wordsRdd.map(word => (word,1))
+		val wordcountrdd = wordcountInitRdd.reduceByKey((v1,v2) => v1 +v2)
+		val highfreqwords = wordcountrdd.filter(x=>x._2 > 4)
+		highfreqwords.saveAsTextFile("wordcountsdir")
+	}
+
+}

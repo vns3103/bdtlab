@@ -1,0 +1,48 @@
+data()
+
+
+head(mtcars)
+
+
+dim(mtcars)
+
+df <- data.frame(mtcars)
+
+sapply(df, class)
+
+df$am[df$am == 0] <- "automatic"
+df$am[df$am == 1] <- "manual"
+
+table(df$am)
+
+
+plot(
+  df$hp,
+  df$wt,
+  xlab = "Horsepower",
+  ylab = "Weight",
+  main = "HP vs WT",
+  col = "green"
+)
+
+hist(
+  df$mpg,
+  col = "red",
+  border="black",
+  xlab = "Miles / Gallon"
+)
+
+
+df$am[df$am == "automatic"] = 0
+df$am[df$am == "manual"] = 1
+
+sapply(df, class)
+
+df$am = as.integer(df$am)
+df$cyl = as.integer(df$cyl)
+df$vs = as.integer(df$vs)
+
+sapply(df, class)
+
+cyl5 = subset(df, cyl < 5)
+print(cyl5)

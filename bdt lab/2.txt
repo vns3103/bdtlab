@@ -1,0 +1,26 @@
+n <- as.integer(readline("Enter the number of employees: "))
+
+id <- vector(mode="character", length=n)
+name <- vector(mode = "character", length=n)
+doj <- vector(mode = "character", length = n)
+dept <- vector(mode = "character", length = n)
+design <- vector(mode = "character", length = n)
+
+
+for(i in 1:n)
+{
+  id[i] <- as.character(readline("Enter: "))
+  name[i] <- as.character(readline("Enter: "))
+  doj[i] <- as.character(readline("Enter: "))
+  dept[i] <- as.character(readline("Enter: "))
+  design[i] <- as.character(readline("Enter: "))
+}
+
+employees = data.frame(id, name, doj, dept, design)
+print(employees)
+
+write.csv(employees, "./emp.csv", row.names = TRUE)
+
+read.csv("./emp.csv")
+z = ("123", "Ashwin", "28/07/2002", "GOT", "Lannister")
+write.table(z, "./emp.csv", append=TRUE, sep=",", col.names=FALSE, row.names = TRUE, quote=FALSE)

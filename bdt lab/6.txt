@@ -1,0 +1,20 @@
+// min max program
+import scala.io.StdIn
+object tryProg{
+    def main(args : Array[String]): Unit = {
+        var numbers = List[Int]()
+        print("Enter the number of elements: ")
+        var n = StdIn.readInt()
+        println("Enter elements line by line")
+        for(i <- 0 until n){
+            var num = StdIn.readInt()
+            numbers = num :: numbers
+        }
+
+        val maxElement = numbers.max
+        val minElement = numbers.min
+
+        println(s"Maximum element: $maxElement")
+        println(s"Minimum element: $minElement")
+    }
+}

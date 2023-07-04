@@ -1,0 +1,19 @@
+data("airquality")
+
+
+dim(airquality)
+
+df <- data.frame(airquality)
+sapply(df, class)
+
+colSums(is.na(df))
+
+df$Ozone[is.na(df$Ozone)] <- mean(df$Ozone, na.rm=TRUE)
+df$Solar.R[is.na(df$Solar.R)] <- mean(df$Solar.R, na.rm=TRUE)
+
+
+print(df)
+
+
+df_new = na.exclude(df)
+print(df_new)
