@@ -7,7 +7,7 @@ object wordcount{
 		val pathToFile = "log.txt"
 		val conf = new SparkConf().setAppName("word count").setMaster("local[*]")
 		val sc = new SparkContext(conf)
-		val wordsRdd = sc.textFile(pathToFile).flatmap(_.split(" "))
+		val wordsRdd = sc.textFile(pathToFile).flatMap(_.split(" "))
 		val wordcountInitRdd = wordsRdd.map(word => (word,1))
 		val wordcountrdd = wordcountInitRdd.reduceByKey((v1,v2) => v1 +v2)
 		val highfreqwords = wordcountrdd.filter(x=>x._2 > 4)
