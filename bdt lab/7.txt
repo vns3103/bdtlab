@@ -6,7 +6,7 @@ object temp{
 	def showNotification(notification : Notification) : string = {
 		notification match{
 			case Email(emailaddr,subject,body)=> s"you got an email from $emailaddr,with the subject $subject ,with body $body"
-			case sms(number,message)=> s"you got a message from $number,with the message $message"
+			case SMS(number,message)=> s"you got a message from $number,with the message $message"
 		}
 	}
 	def main(args : Array[String]):unit = {
